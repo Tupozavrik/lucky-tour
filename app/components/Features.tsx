@@ -1,27 +1,44 @@
 import styles from './features.module.css';
+import { client, urlFor } from '@/sanity/lib/client';
 
-export default function Features() {
+export const revalidate = 60; // Revalidate every 60 seconds
+
+async function getTeamMembers() {
+    return await client.fetch(`*[_type == "teamMember"]{
+        _id,
+        name,
+        description,
+        "imageUrl": photo.asset->url
+    }`);
+}
+
+export default async function Features() {
+    const teamMembers = await getTeamMembers();
+
     return (
         <section className={styles.features}>
             <div className={styles.container}>
                 <h2 className={styles.sectionTitle}>НАША КОМАНДА</h2>
                 <div className={styles.teamGrid}>
-                    <div className={styles.teamMember}>
-                        <div className={styles.avatar}>
-                            {/* Фото будет добавлено позже */}
-                            <span className={styles.avatarInitial}>Е</span>
-                        </div>
-                        <h3 className={styles.memberName}>Елена</h3>
-                        <p className={styles.memberDesc}>ОПИСАНИЕ</p>
-                    </div>
-                    <div className={styles.teamMember}>
-                        <div className={styles.avatar}>
-                            {/* Фото будет добавлено позже */}
-                            <span className={styles.avatarInitial}>О</span>
-                        </div>
-                        <h3 className={styles.memberName}>Оксана</h3>
-                        <p className={styles.memberDesc}>ОПИСАНИЕ</p>
-                    </div>
+                    {teamMembers.length > 0 ? (
+                        teamMembers.map((member: any) => (
+                            <div key={member._id} className={styles.teamMember}>
+                                <div className={styles.avatar}>
+                                    {member.imageUrl ? (
+                                        <img src={member.imageUrl} alt={member.name} />
+                                    ) : (
+                                        <span className={styles.avatarInitial}>
+                                            {member.name ? member.name.charAt(0).toUpperCase() : '👤'}
+                                        </span>
+                                    )}
+                                </div>
+                                <h3 className={styles.memberName}>{member.name}</h3>
+                                <p className={styles.memberDesc}>{member.description}</p>
+                            </div>
+                        ))
+                    ) : (
+                        <p style={{ textAlign: 'center', opacity: 0.7 }}>Команда пока не добавлена. Администратор может добавить сотрудников через CMS.</p>
+                    )}
                 </div>
 
                 <h2 className={styles.sectionTitle} style={{ marginTop: '4rem' }}>ПОЧЕМУ МЫ?</h2>
