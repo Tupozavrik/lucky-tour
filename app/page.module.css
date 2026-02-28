@@ -1,0 +1,10 @@
+.main {
+    min-height: 100vh;
+    position: relative;
+}
+
+.searchWrapper {
+    position: relative;
+    height: 0;
+    z-index: 10;
+}

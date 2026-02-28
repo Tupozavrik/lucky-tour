@@ -1,0 +1,376 @@
+.page {
+    min-height: 100vh;
+    background: #f8f9fa;
+}
+
+/* ── Hero Banner ── */
+.heroBanner {
+    position: relative;
+    height: 42vh;
+    min-height: 290px;
+    background-image: url('/group.jpg');
+    background-size: cover;
+    background-position: center 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.heroOverlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 60, 100, 0.55));
+}
+
+.heroContent {
+    position: relative;
+    z-index: 2;
+    padding: 0 1rem;
+}
+
+.breadcrumb {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    margin-bottom: 0.75rem;
+    display: block;
+}
+
+.breadcrumb a {
+    color: white;
+    text-decoration: underline;
+    opacity: 0.75;
+}
+
+.breadcrumb a:hover {
+    opacity: 1;
+}
+
+.heroTitle {
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
+.heroSubtitle {
+    font-size: 1.05rem;
+    opacity: 0.9;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* ── Advantages ── */
+.advantages {
+    background: white;
+    padding: 3rem 1.5rem;
+}
+
+.advantagesGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.advantageItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.advantageIcon {
+    font-size: 2.4rem;
+    margin-bottom: 0.25rem;
+}
+
+.advantageItem h3 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.advantageItem p {
+    font-size: 0.85rem;
+    color: #777;
+    line-height: 1.5;
+}
+
+/* ── Tours Section ── */
+.toursSection {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+}
+
+.toursHeader {
+    margin-bottom: 1.5rem;
+}
+
+.toursTitle {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: #1a1a1a;
+}
+
+.toursSubtitle {
+    font-size: 0.95rem;
+    color: #888;
+    margin-top: 0.25rem;
+}
+
+/* ── Filter Tabs ── */
+.tabs {
+    display: flex;
+    gap: 0.6rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.tab {
+    padding: 0.55rem 1.4rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 50px;
+    background: white;
+    color: #555;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.tab:hover {
+    border-color: #21a110;
+    color: #21a110;
+}
+
+.tabActive {
+    background: #21a110;
+    border-color: #21a110;
+    color: white !important;
+}
+
+/* ── Cards Grid ── */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.75rem;
+}
+
+.card {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.25s, box-shadow 0.25s;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.13);
+}
+
+.cardImageWrap {
+    position: relative;
+    height: 215px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.cardImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.card:hover .cardImage {
+    transform: scale(1.06);
+}
+
+.cardTag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cardDate {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(0, 0, 0, 0.55);
+    color: white;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    backdrop-filter: blur(4px);
+}
+
+.cardBody {
+    padding: 1.25rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.cardName {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+}
+
+.cardDesc {
+    font-size: 0.88rem;
+    color: #666;
+    line-height: 1.55;
+    margin-bottom: 1rem;
+    flex: 1;
+}
+
+.cardMeta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.1rem;
+}
+
+.metaItem {
+    font-size: 0.83rem;
+    color: #888;
+    background: #f3f3f3;
+    padding: 4px 10px;
+    border-radius: 8px;
+}
+
+.cardFooter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+}
+
+.cardPrice {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #21a110;
+}
+
+.cardBtn {
+    display: inline-block;
+    padding: 0.6rem 1.4rem;
+    background: #21a110;
+    color: white;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.cardBtn:hover {
+    background: #1b8f0e;
+    transform: translateY(-2px);
+}
+
+/* ── No Results ── */
+.noResults {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 4rem 2rem;
+    color: #aaa;
+    font-size: 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.noResults span {
+    font-size: 3rem;
+}
+
+/* ── CTA Banner ── */
+.ctaBanner {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    margin-top: 4rem;
+    padding: 4.5rem 2rem;
+    text-align: center;
+    color: white;
+}
+
+.ctaContent {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.ctaTitle {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+}
+
+.ctaText {
+    font-size: 1rem;
+    opacity: 0.85;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.ctaBtn {
+    display: inline-block;
+    background: #25d366;
+    color: white;
+    padding: 0.9rem 2.5rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.ctaBtn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+    .advantagesGrid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .heroTitle {
+        font-size: 2rem;
+    }
+
+    .advantagesGrid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.25rem;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ctaTitle {
+        font-size: 1.5rem;
+    }
+}
