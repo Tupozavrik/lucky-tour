@@ -13,13 +13,28 @@
   padding: 0;
 }
 
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
 body {
   color: var(--text-dark);
   background: var(--background);
   font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-wrap: break-word;
 }
 
 a {
   color: inherit;
   text-decoration: none;
+}
+
+/* Prevent iOS zoom on inputs/selects which causes layout shifts */
+input,
+select,
+textarea {
+  font-size: 16px;
 }

@@ -127,3 +127,25 @@
     color: #666;
     text-align: right;
 }
+
+@media (max-width: 768px) {
+    .features {
+        padding: 3rem 1rem;
+    }
+
+    .sectionTitle {
+        font-size: 1.6rem;
+        margin-bottom: 2rem;
+    }
+
+    .grid,
+    .reviews {
+        grid-template-columns: 1fr;
+    }
+
+    .teamGrid {
+        flex-direction: column;
+        align-items: center;
+        gap: 3rem;
+    }
+}
