@@ -32,6 +32,7 @@ export default function Header() {
                 {/* Desktop Navigation */}
                 <nav className={styles.nav}>
                     <Link href="/finder" className={styles.link}>Поиск тура</Link>
+                    <Link href="/exchange" className={styles.link}>Обмен валюты</Link>
                     <Link href="/contacts" className={styles.link}>Контакты</Link>
                     <Link href="/docs" className={styles.link}>Договоры</Link>
                 </nav>
@@ -55,10 +56,11 @@ export default function Header() {
                 </button>
             </div>
 
-            {/* Mobile Menu Overlay */}
+        {/* Mobile Menu Overlay */}
             <div className={`${styles.mobileMenu} ${isMobileMenuOpen ? styles.open : ''}`}>
                 <nav className={styles.mobileNav}>
                     <Link href="/finder" className={styles.mobileLink} onClick={closeMenu}>Поиск тура</Link>
+                    <Link href="/exchange" className={styles.mobileLink} onClick={closeMenu}>Обмен валюты</Link>
                     <Link href="/contacts" className={styles.mobileLink} onClick={closeMenu}>Контакты</Link>
                     <Link href="/docs" className={styles.mobileLink} onClick={closeMenu}>Договоры</Link>
                 </nav>

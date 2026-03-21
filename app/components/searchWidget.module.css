@@ -1,0 +1,188 @@
+.container {
+  background-color: #1a8ee1; /* Vibrant blue matching Tourvisor */
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(26, 142, 225, 0.2);
+}
+
+/* --- Top Radios --- */
+.typeSelector {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+}
+
+.radioInput {
+  display: none;
+}
+
+.radioCustom {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.radioInput:checked + .radioCustom::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+}
+
+/* --- Middle White Box --- */
+.mainSearchBox {
+  background: #fff;
+  border-radius: 8px;
+  display: flex;
+  align-items: stretch;
+  padding: 6px; 
+  margin-bottom: 20px;
+  min-height: 80px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.searchColumns {
+  display: flex;
+  flex: 1;
+  align-items: stretch;
+}
+
+.searchCol {
+  flex: 1;
+  padding: 12px 20px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.searchCol:hover {
+  background-color: #f7f9fc;
+}
+
+/* Vertical separator between columns */
+.searchCol:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 60%;
+  width: 1px;
+  background-color: #e5e7eb;
+}
+
+.colLabel {
+  color: #99a4bd;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.colValue {
+  color: #2a333d;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* Search Button Column inside White Box */
+.submitBtnContainer {
+  display: flex;
+  align-items: center;
+  padding-left: 6px; /* space between last col and button */
+}
+
+.submitBtn {
+  background-color: #fc6354;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0 24px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background-color 0.2s;
+  height: 100%;
+  min-width: 180px;
+}
+
+.submitBtn:hover {
+  background-color: #f55545;
+}
+
+/* --- Bottom Selectors --- */
+.bottomFilters {
+  display: flex;
+  gap: 12px;
+  align-items: stretch;
+  flex-wrap: wrap; /* allow wrapping on smaller screens */
+}
+
+.filterBtn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 4px;
+  padding: 10px 16px;
+  color: #fff;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.filterBtn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+  margin-left: auto;
+}
+
+.star {
+  /* SVG colors handle fill, we can set text color */
+  color: rgba(255, 255, 255, 0.5); 
+}
+
+.starActive {
+  color: #fc6354; /* the coral/red active star */
+}
+
+.iconDown {
+  opacity: 0.9;
+  margin-left: auto;
+}

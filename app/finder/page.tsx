@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import styles from './finder.module.css';
 import { client, urlFor } from '@/sanity/lib/client';
+import SearchWidget from '../components/SearchWidget';
 
 export const revalidate = 60; // Revalidate cache every 60 seconds
 
@@ -38,43 +39,38 @@ export default async function FinderPage() {
                     </div>
                 </section>
 
+                {/* Search Widget Section */}
+                <div style={{ padding: '0 20px', marginTop: '60px', position: 'relative', zIndex: 10, display: 'flex', justifyContent: 'center' }}>
+                    <SearchWidget />
+                </div>
+
                 {/* Results List */}
                 <section className={styles.results}>
-                    <div className={styles.resultsHeader}>
-                        <h2 className={styles.resultsTitle}>Наши Туры</h2>
-                        <p className={styles.resultsSubtitle}>Выберите путешествие вашей мечты</p>
+
+
+                    <div className={styles.grid}>
+                        {tours.map((tour: any) => (
+                            <div key={tour._id} className={styles.card}>
+                                <div className={styles.cardImageWrap}>
+                                    <span className={styles.cardTag}>{tour.location || 'Весь мир'}</span>
+                                    <img
+                                        src={tour.imageUrl || '/hero.png'}
+                                        alt={tour.title}
+                                        className={styles.cardImage}
+                                    />
+                                </div>
+                                <div className={styles.cardBody}>
+                                    <h3 className={styles.cardName}>{tour.title}</h3>
+                                    <div className={styles.cardMeta}>
+                                        <span className={styles.cardDuration}>⏱️ {tour.duration || 'По запросу'}</span>
+                                        <span className={styles.cardPrice}>{tour.price || 'Уточняйте'}</span>
+                                    </div>
+                                    <button className={styles.cardBtn}>Узнать подробнее</button>
+                                </div>
+                            </div>
+                        ))}
                     </div>
 
-                    {tours.length === 0 ? (
-                        <div className={styles.noResults}>
-                            <span className={styles.noResultsIcon}>🌍</span>
-                            <h3>Пока нет доступных туров</h3>
-                            <p>Загляните позже или свяжитесь с нами напрямую</p>
-                        </div>
-                    ) : (
-                        <div className={styles.grid}>
-                            {tours.map((tour: any) => (
-                                <div key={tour._id} className={styles.card}>
-                                    <div className={styles.cardImageWrap}>
-                                        <span className={styles.cardTag}>{tour.location || 'Весь мир'}</span>
-                                        <img
-                                            src={tour.imageUrl || '/hero.png'}
-                                            alt={tour.title}
-                                            className={styles.cardImage}
-                                        />
-                                    </div>
-                                    <div className={styles.cardBody}>
-                                        <h3 className={styles.cardName}>{tour.title}</h3>
-                                        <div className={styles.cardMeta}>
-                                            <span className={styles.cardDuration}>⏱️ {tour.duration || 'По запросу'}</span>
-                                            <span className={styles.cardPrice}>{tour.price || 'Уточняйте'}</span>
-                                        </div>
-                                        <button className={styles.cardBtn}>Узнать подробнее</button>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    )}
                 </section>
 
                 {/* CTA Banner */}
