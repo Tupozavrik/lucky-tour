@@ -186,3 +186,172 @@
   opacity: 0.9;
   margin-left: auto;
 }
+
+/* --- Mobile Utility Classes --- */
+.mobileIcon {
+  display: none;
+}
+
+.showOnMobile {
+  display: none !important;
+}
+
+/* --- Responsive Layout --- */
+@media (max-width: 768px) {
+  .container {
+    padding: 16px 20px 24px;
+    background-color: #0d83d1; /* Match tourvisor solid blue */
+    box-shadow: none;
+    margin: -40px -20px 0 -20px; /* Break out of parent padding */
+    border-radius: 0;
+  }
+
+  /* Force display toggles */
+  .showOnMobile {
+    display: flex !important;
+  }
+  .hideOnMobile {
+    display: none !important;
+  }
+  .hideOnMobileText {
+    display: none;
+  }
+
+  /* Segmented control styling */
+  .typeSelector {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    padding: 4px;
+    gap: 0;
+  }
+  
+  .radioLabel {
+    flex: 1;
+    justify-content: center;
+    padding: 10px 0;
+    margin: 0;
+    font-size: 14px;
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  
+  .radioCustom {
+    display: none;
+  }
+  
+  .activeRadio {
+    background: #fff;
+    color: #1a8ee1;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    font-weight: 600;
+  }
+
+  /* Top Bar */
+  .mobileTopBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding: 0 4px;
+  }
+  
+  .mobileCity {
+    font-size: 17px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .mobileHeartBtn {
+    background: rgba(0,0,0,0.2);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  /* Main Info Box Grid */
+  .mainSearchBox {
+    flex-direction: column;
+    background: transparent;
+    box-shadow: none;
+    padding: 0;
+    min-height: auto;
+  }
+
+  .searchColumns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .countryCol {
+    grid-column: 1 / -1;
+  }
+
+  .searchCol {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 16px;
+    border-bottom: 1px solid #e5e7eb;
+    border-radius: 0;
+  }
+
+  .searchCol:nth-child(even):not(.countryCol) {
+    border-left: 1px solid #e5e7eb;
+  }
+
+  .searchCol:not(:last-child)::after {
+    display: none;
+  }
+
+  .touristsCol, .mobileFiltersCol {
+    border-bottom: none;
+  }
+
+  .mobileIcon {
+    display: block;
+    margin-right: 12px;
+    flex-shrink: 0;
+  }
+
+  .colContent {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .colLabel {
+    display: none; /* Removed label entirely to match screenshot */
+  }
+
+  .colValue {
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  /* Big Button */
+  .submitBtnContainer {
+    margin-top: 12px;
+    padding: 0;
+  }
+
+  .submitBtn {
+    width: 100%;
+    padding: 16px;
+    border-radius: 8px;
+    font-size: 18px;
+  }
+
+  /* Clean up desktop filters */
+  .bottomFilters {
+    display: none;
+  }
+}

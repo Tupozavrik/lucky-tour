@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import styles from './searchWidget.module.css';
-import { Search, ChevronDown, Star } from 'lucide-react';
+import { Search, ChevronDown, Star, MapPin, Calendar, Clock, User, SlidersHorizontal, Heart } from 'lucide-react';
 
 export default function SearchWidget() {
   const [type, setType] = useState('tours'); // 'tours', 'hotels', 'lastMinute'
@@ -11,7 +11,7 @@ export default function SearchWidget() {
     <div className={styles.container}>
       {/* Top Radios */}
       <div className={styles.typeSelector}>
-        <label className={styles.radioLabel}>
+        <label className={`${styles.radioLabel} ${type === 'tours' ? styles.activeRadio : ''}`}>
           <input 
             type="radio" 
             name="searchType" 
@@ -20,9 +20,9 @@ export default function SearchWidget() {
             onChange={() => setType('tours')}
           />
           <div className={styles.radioCustom} />
-          <span>Туры с перелетом</span>
+          <span>Туры<span className={styles.hideOnMobileText}> с перелетом</span></span>
         </label>
-        <label className={styles.radioLabel}>
+        <label className={`${styles.radioLabel} ${type === 'hotels' ? styles.activeRadio : ''}`}>
           <input 
             type="radio" 
             name="searchType" 
@@ -33,7 +33,7 @@ export default function SearchWidget() {
           <div className={styles.radioCustom} />
           <span>Отели</span>
         </label>
-        <label className={styles.radioLabel}>
+        <label className={`${styles.radioLabel} ${type === 'lastMinute' ? styles.activeRadio : ''}`}>
           <input 
             type="radio" 
             name="searchType" 
@@ -46,28 +46,56 @@ export default function SearchWidget() {
         </label>
       </div>
 
+      {/* Mobile Top Bar (City + Heart) */}
+      <div className={`${styles.mobileTopBar} ${styles.showOnMobile}`}>
+        <div className={styles.mobileCity}>
+          из Москвы <ChevronDown size={16} />
+        </div>
+        <button className={styles.mobileHeartBtn}>
+          <Heart size={20} color="#fff" />
+        </button>
+      </div>
+
       {/* Main Search Box */}
       <div className={styles.mainSearchBox}>
         <div className={styles.searchColumns}>
-          <div className={styles.searchCol}>
+          <div className={`${styles.searchCol} ${styles.hideOnMobile}`}>
             <div className={styles.colLabel}>Город вылета</div>
             <div className={styles.colValue}>Москва</div>
           </div>
-          <div className={styles.searchCol}>
-            <div className={styles.colLabel}>Страна</div>
-            <div className={styles.colValue}>Турция</div>
+          <div className={`${styles.searchCol} ${styles.countryCol}`}>
+            <MapPin className={styles.mobileIcon} size={18} color="#1a8ee1" />
+            <div className={styles.colContent}>
+              <div className={styles.colLabel}>Страна</div>
+              <div className={styles.colValue}>Турция</div>
+            </div>
           </div>
-          <div className={styles.searchCol}>
-            <div className={styles.colLabel}>Даты вылета</div>
-            <div className={styles.colValue}>22 мар - 31 мар</div>
+          <div className={`${styles.searchCol} ${styles.dateCol}`}>
+            <Calendar className={styles.mobileIcon} size={18} color="#1a8ee1" />
+            <div className={styles.colContent}>
+              <div className={styles.colLabel}>Даты вылета</div>
+              <div className={styles.colValue}>26 мар - 4 апр</div>
+            </div>
           </div>
-          <div className={styles.searchCol}>
-            <div className={styles.colLabel}>Ночей</div>
-            <div className={styles.colValue}>6 - 14</div>
+          <div className={`${styles.searchCol} ${styles.nightsCol}`}>
+            <Clock className={styles.mobileIcon} size={18} color="#1a8ee1" />
+            <div className={styles.colContent}>
+              <div className={styles.colLabel}>Ночей</div>
+              <div className={styles.colValue}>6 - 14 ночей</div>
+            </div>
           </div>
-          <div className={styles.searchCol}>
-            <div className={styles.colLabel}>Туристы</div>
-            <div className={styles.colValue}>2 взрослых</div>
+          <div className={`${styles.searchCol} ${styles.touristsCol}`}>
+            <User className={styles.mobileIcon} size={18} color="#1a8ee1" />
+            <div className={styles.colContent}>
+              <div className={styles.colLabel}>Туристы</div>
+              <div className={styles.colValue}>2 взрослых</div>
+            </div>
+          </div>
+          <div className={`${styles.searchCol} ${styles.mobileFiltersCol} ${styles.showOnMobile}`}>
+            <SlidersHorizontal className={styles.mobileIcon} size={18} color="#1a8ee1" />
+            <div className={styles.colContent}>
+              <div className={styles.colValue}>Фильтры</div>
+            </div>
           </div>
         </div>
         
