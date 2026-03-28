@@ -5,7 +5,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import styles from './exchange-page.module.css';
 
-export const revalidate = 60; // Revalidate every minute
+export const revalidate = 60;
 
 async function getExchangeData() {
   const query = groq`{

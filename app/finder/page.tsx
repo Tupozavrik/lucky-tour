@@ -1,11 +1,12 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import styles from './finder.module.css';
-import { client, urlFor } from '@/sanity/lib/client';
+import { client } from '@/sanity/lib/client';
 import SearchWidget from '../components/SearchWidget';
 
-export const revalidate = 60; // Revalidate cache every 60 seconds
+export const revalidate = 60;
 
 async function getTours() {
     return await client.fetch(`*[_type == "tour"]{
@@ -25,7 +26,6 @@ export default async function FinderPage() {
         <>
             <Header />
             <main className={styles.page}>
-                {/* Hero Banner */}
                 <section className={styles.heroBanner}>
                     <div className={styles.heroOverlay} />
                     <div className={styles.heroContent}>
@@ -39,24 +39,23 @@ export default async function FinderPage() {
                     </div>
                 </section>
 
-                {/* Search Widget Section */}
                 <div style={{ padding: '0 20px', marginTop: '60px', position: 'relative', zIndex: 10, display: 'flex', justifyContent: 'center' }}>
                     <SearchWidget />
                 </div>
 
-                {/* Results List */}
                 <section className={styles.results}>
-
-
                     <div className={styles.grid}>
                         {tours.map((tour: any) => (
                             <div key={tour._id} className={styles.card}>
                                 <div className={styles.cardImageWrap}>
-                                    <span className={styles.cardTag}>{tour.location || 'Весь мир'}</span>
-                                    <img
+                                    <span className={styles.cardTag} style={{ zIndex: 1 }}>{tour.location || 'Весь мир'}</span>
+                                    <Image
                                         src={tour.imageUrl || '/hero.png'}
                                         alt={tour.title}
+                                        fill
+                                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                         className={styles.cardImage}
+                                        style={{ objectFit: 'cover' }}
                                     />
                                 </div>
                                 <div className={styles.cardBody}>
@@ -70,10 +69,8 @@ export default async function FinderPage() {
                             </div>
                         ))}
                     </div>
-
                 </section>
 
-                {/* CTA Banner */}
                 <section className={styles.ctaBanner}>
                     <div className={styles.ctaContent}>
                         <h2 className={styles.ctaTitle}>Не нашли подходящий тур?</h2>
